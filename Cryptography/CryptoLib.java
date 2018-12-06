@@ -25,12 +25,12 @@ public class CryptoLib {
 	public static int[] EEA(int a, int b) {
 		// Note: as you can see in the test suite,
 		// your function should work for any (positive) value of a and b.
+		int c;
 
 		boolean swaped = false;
 
 		if (b>=a) {
 			//swap places
-			int c = 0;
 			c = b;
 			b = a;
 			a = c;
@@ -96,7 +96,7 @@ public class CryptoLib {
 
 	public static int EulerPhi(int n) {
 		int result = 0;
-		for (int i = 0; i <= n; i++) {
+		for (int i = 0; i < n; i++) {
 			if (gcd(n, i) == 1) result++;
 		}
 		return result;
@@ -112,7 +112,10 @@ public class CryptoLib {
 		int mv;
 
 		//if n is negative change to non-negative
-		if (n <= 0) n= n + m;
+		if (n <= 0) n = n + m;
+
+		if( gcd( n, m ) != 1 )
+			return 0;
 
 		arrayRes = EEA(n,m);
 
@@ -121,7 +124,7 @@ public class CryptoLib {
 			mv = arrayRes[1] + m;
 		else
 			mv = arrayRes[1];
-		return mv ;
+		return mv;
 	}
 
 	/**
