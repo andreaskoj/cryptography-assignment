@@ -130,7 +130,7 @@ public class CryptoLib {
 	/**
 	 * Returns 0 if "n" is a Fermat Prime, otherwise it returns the lowest
 	 * Fermat Witness. Tests values from 2 (inclusive) to "n/3" (exclusive).
-	 *
+	 
 	 * Instead of picking random values a to test the primality of a number n,
 	 * make a start from 2 and increment it by 1 at each new iteration, until you have tested all the values below n/3.
 	 **/
