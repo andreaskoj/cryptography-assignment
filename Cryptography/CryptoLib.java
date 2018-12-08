@@ -18,11 +18,23 @@ public class CryptoLib
             return n1;
     }
 
-    /**
-     * Returns an array "result" with the values "result[0] = gcd",
-     * "result[1] = s" and "result[2] = t" such that "gcd" is the greatest
-     * common divisor of "a" and "b", and "gcd = a * s + b * t".
-     **/
+	// computing powers in modulars
+	private static int power_modulo(int a, int b, int m) {
+		int x,i;
+
+		x = a%m;
+		for(i = 1; i < b; i++) {
+			x = x * a;
+			x = x % m;
+		}
+		return x;
+	}
+
+	/**
+	 * Returns an array "result" with the values "result[0] = gcd",
+	 * "result[1] = s" and "result[2] = t" such that "gcd" is the greatest
+	 * common divisor of "a" and "b", and "gcd = a * s + b * t".
+	 **/
 
     public static int[] EEA( int a, int b )
     {
@@ -136,18 +148,37 @@ public class CryptoLib
         return mv;
     }
 
-    /**
-     * Returns 0 if "n" is a Fermat Prime, otherwise it returns the lowest
-     * Fermat Witness. Tests values from 2 (inclusive) to "n/3" (exclusive).
-     * <p>
-     * Instead of picking random values a to test the primality of a number n,
-     * make a start from 2 and increment it by 1 at each new iteration, until you have tested all the values below n/3.
-     **/
+	/**
+	 * Returns 0 if "n" is a Fermat Prime, otherwise it returns the lowest
+	 * Fermat Witness. Tests values from 2 (inclusive) to "n/3" (exclusive).
 
-    public static int FermatPT( int n )
-    {
-        return -1;
-    }
+	 * Instead of picking random values a to test the primality of a number n,
+	 * make a start from 2 and increment it by 1 at each new iteration, until you have tested all the values below n/3.
+	 **/
+
+	public static int FermatPT(int n) {
+		int numberOfTests=0;
+		int testOK = 0;
+
+
+		for( int a = 2; a < n/3; a++) {
+
+			// probably prime
+			if(power_modulo(a,n-1 ,n) == 1) {
+				testOK++;
+			}
+
+			//not prime // collect lowest witness
+			else {
+				return a;
+			}
+			numberOfTests++;
+		}
+
+		if (numberOfTests == testOK) return 0;
+
+		return -1;
+	}
 
     /**
      * Returns the probability that calling a perfect hash function with
