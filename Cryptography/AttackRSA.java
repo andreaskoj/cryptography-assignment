@@ -1,3 +1,5 @@
+package Cryptography;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.math.BigInteger;
@@ -44,9 +46,9 @@ public class AttackRSA {
 	 * @param c
 	 *            The cipher text received by each receiver.
 	 * @return The same message that was sent to each receiver.
+	 *
 	 */
-	private static BigInteger recoverMessage(BigInteger[] N, BigInteger[] e,
-			BigInteger[] c) {
+	private static BigInteger recoverMessage(BigInteger[] N, BigInteger[] e, BigInteger[] c) {
 		// TODO Solve assignment.
 		return BigInteger.ZERO;
 	}

@@ -27,7 +27,6 @@ public class CryptoLib {
         }
         return x;
     }
-
     /**
      * Returns an array "result" with the values "result[0] = gcd",
      * "result[1] = s" and "result[2] = t" such that "gcd" is the greatest
