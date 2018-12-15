@@ -11,8 +11,6 @@ import java.util.Arrays;
 
 public class CBCXor {
 
-
-
 	public static void main(String[] args) {
 		String filename = "Cryptography/inputCBC.txt";
 		byte[] first_block = null;

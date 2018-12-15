@@ -35,7 +35,7 @@ public class FiatShamir {
 
     public static void main(String[] args) {
 
-        String filename = "input.txt";
+        String filename = "Cryptography/inputFS.txt";
         BigInteger N = BigInteger.ZERO;
         BigInteger X = BigInteger.ZERO;
         ProtocolRun[] runs = new ProtocolRun[10];
@@ -65,7 +65,6 @@ public class FiatShamir {
             System.err.println("Error handling file.");
             err.printStackTrace();
             System.exit(1);
-
         }
 
         BigInteger m = recoverSecret(N, X, runs);
@@ -85,6 +84,20 @@ public class FiatShamir {
      * @param X    The public component
      * @param runs Ten runs of the protocol.
      * @return
+	 *
+	 *  We eavesdropped on a number of Fiat-Shamir protocol runs and we found that the same nonce was used twice!
+	 *  Due to the special soundness property you should now be able to retrieve the secret key used in the protocol.
+	 *
+	 * Less
+	 *
+	 * The Fiat-Shamir protocol is a zero-knowledge protocol, briefly explained here.
+	 * The text box below displays (n), the modulus used, and (X) the public key of the prover.
+	 * #We know that X = x2 and your task is to find x.
+	 * The rest of the input is a sequence of runs of the Fiat Shamir protocol.
+	 * R is the random value sent to the verifier, c is the challenge sent to the prover,
+	 * and s is the proof sent back to the verifier.
+	 *
+	 * Look for runs with the same random value, i.e. the same value of R.
      */
     private static BigInteger recoverSecret(BigInteger N, BigInteger X, ProtocolRun[] runs) {
 
