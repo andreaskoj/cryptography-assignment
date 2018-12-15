@@ -83,26 +83,72 @@ public class FiatShamir {
      * @param N    The modulus
      * @param X    The public component
      * @param runs Ten runs of the protocol.
-     * @return
-	 *
-	 *  We eavesdropped on a number of Fiat-Shamir protocol runs and we found that the same nonce was used twice!
-	 *  Due to the special soundness property you should now be able to retrieve the secret key used in the protocol.
-	 *
-	 * Less
-	 *
-	 * The Fiat-Shamir protocol is a zero-knowledge protocol, briefly explained here.
-	 * The text box below displays (n), the modulus used, and (X) the public key of the prover.
-	 * #We know that X = x2 and your task is to find x.
-	 * The rest of the input is a sequence of runs of the Fiat Shamir protocol.
-	 * R is the random value sent to the verifier, c is the challenge sent to the prover,
-	 * and s is the proof sent back to the verifier.
-	 *
-	 * Look for runs with the same random value, i.e. the same value of R.
+     * @return We eavesdropped on a number of Fiat-Shamir protocol runs and we found that the same nonce was used twice!
+     * Due to the special soundness property you should now be able to retrieve the secret key used in the protocol.
+     * <p>
+     * Less
+     * <p>
+     * The Fiat-Shamir protocol is a zero-knowledge protocol, briefly explained here.
+     * The text box below displays (n), the modulus used, and (X) the public key of the prover.
+     * #We know that X = x2 and your task is to find x.
+     * The rest of the input is a sequence of runs of the Fiat Shamir protocol.
+     * R is the random value sent to the verifier, c is the challenge sent to the prover,
+     * and s is the proof sent back to the verifier.
+     * <p>
+     * Look for runs with the same random value, i.e. the same value of R.
      */
     private static BigInteger recoverSecret(BigInteger N, BigInteger X, ProtocolRun[] runs) {
 
         // TODO. Recover the secret value x such that x^2 = X (mod N).
-        return BigInteger.ZERO;
 
+        Boolean found = false;
+        int i, j;
+        BigInteger Ri, Rj, si, sj, sModInverse;
+        Integer ci, cj;
+
+        ci = j = 0;
+
+        for (i = 0; i < runs.length - 1; i++) {
+
+            Ri = runs[i].R;
+            ci = runs[i].c;
+
+            for (j = i + 1; j < runs.length; j++) {
+
+                Rj = runs[j].R;
+                cj = runs[j].c;
+
+                if ( Ri.equals(Rj) && !ci.equals(cj) )
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if( found )
+                break;
+        }
+
+        if( found )
+        {
+            if( ci == 0 )
+            {
+                System.out.println(i);
+                System.out.println(j);
+                si = runs[i].s;
+                sj = runs[j].s;
+            }
+            else
+            {
+                sj = runs[i].s;
+                si = runs[j].s;
+            }
+
+            sModInverse = si.modInverse(N);
+
+            return sj.multiply(sModInverse).mod(N);
+        }
+        else
+            return BigInteger.ZERO;
     }
 }
