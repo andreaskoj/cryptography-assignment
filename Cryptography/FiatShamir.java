@@ -146,6 +146,7 @@ public class FiatShamir {
 
             sModInverse = si.modInverse(N);
 
+
             return sj.multiply(sModInverse).mod(N);
         }
         else

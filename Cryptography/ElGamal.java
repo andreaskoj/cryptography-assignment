@@ -73,20 +73,12 @@ public class ElGamal {
                 found = true;
                 break;
             }
-
         }
 
         if( !found ){
             System.out.println("Error, the correct random value doesn't exist");
             System.exit(1);
         }
-
-        //System.out.println("\nr = " + r);
-
-        //System.out.println("\nc1 = " + c1);
-
-        //System.out.println("\nThe following should be equal to c1:");
-        //System.out.println("g^r = "+ g.modPow(r, p));
 
         BigInteger exp = p.subtract(BigInteger.valueOf(1)).subtract(r);
 
