@@ -17,7 +17,7 @@ public class CryptoLib {
     }
 
     // computing powers in modulars
-    private static int power_modulo(int a, int b, int m) {
+    public static int power_modulo(int a, int b, int m) {
         int x, i;
 
         x = a % m;
