@@ -13,7 +13,7 @@ public class ElGamal {
 
     public static void main(String[] arg) {
 
-        String filename = "input.txt";
+        String filename = "Cryptography/inputELG.txt";
 
         try {
 
@@ -47,6 +47,9 @@ public class ElGamal {
     public static BigInteger recoverSecret(BigInteger p, BigInteger g,
                                            BigInteger y, int year, int month, int day, int hour, int minute,
                                            int second, BigInteger c1, BigInteger c2) {
+
+
+
         return c1;
     }
 
