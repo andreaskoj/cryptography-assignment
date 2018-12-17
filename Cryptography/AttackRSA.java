@@ -4,6 +4,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.math.BigInteger;
 
+/**
+ * Personnummer: 199110264935
+ */
+
 public class AttackRSA {
 
     public static void main(String[] args) {
@@ -59,7 +63,6 @@ public class AttackRSA {
 
     private static BigInteger recoverMessage(BigInteger[] N, BigInteger[] e, BigInteger[] c) {
 
-        // TODO Solve assignment.
 
         BigInteger t1, t2, t3, ctmp, Nmul, Ntmp, Ninv, sum;
 

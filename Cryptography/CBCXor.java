@@ -1,13 +1,16 @@
 package Cryptography;
 
-import com.sun.deploy.util.ArrayUtil;
-
 import javax.xml.bind.DatatypeConverter;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Personnummer: 199110264935
+ * 1. To attack CBC we have to find K key
+ * 2. To get K we xor IV , first_block and ct0.
+ * 3. When we establish the key we use it to decrypt every block of the ct.
+* */
 
 public class CBCXor {
 
@@ -29,23 +32,6 @@ public class CBCXor {
 		System.out.println("Recovered message: " + m);
 	}
 
-	/**
-	 * Recover the encrypted message (CBC encrypted with XOR, block size = 12).
-	 *
-	 * @param first_block We know that this is the value of the first block of plain
-	 *                    text.
-	 * @param encrypted   The encrypted text, of the form IV | C0 | C1 | ... where each
-	 *                    block is 12 bytes long.
-	 *                    <p>
-	 *                    We intercepted a message that was encrypted using cypher-block chaining.
-	 *                    We also know the plain-text value of the first block. Can you reconstruct the complete plain-text message?
-	 *                    <p>
-	 *                    First, have a re-cap on how CBC works. In this case the encryption function is simply a XOR (+)
-	 *                    operation with the key, i.e. Ci = K + (Mi + Ci-1), where C0 = IV.
-	 *                    <p>
-	 *                    In the text box below you find the known first block (= the 12 digit number your provided)
-	 *                    and the encrypted message. You know that the block size is 12.
-	 */
 	private static String recoverMessage(byte[] first_block, byte[] encrypted) {
 		byte[] ivMsg = new byte[12];
 		byte[] key = new byte[12];
