@@ -1,12 +1,17 @@
+/*
+ * REPORT
+ *
+ * Personnummer: 199110264935
+ *
+ *
+ *
+ */
+
 package Cryptography;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.math.BigInteger;
-
-/**
- * Personnummer: 199110264935
- */
 
 public class AttackRSA {
 
@@ -24,7 +29,6 @@ public class AttackRSA {
             for (int i = 0; i < 3; i++) {
 
                 String line = br.readLine();
-                //System.out.println(line);
                 String[] elem = line.split(",");
                 N[i] = new BigInteger(elem[0].split("=")[1]);
                 e[i] = new BigInteger(elem[1].split("=")[1]);
@@ -60,7 +64,6 @@ public class AttackRSA {
      * @param c The cipher text received by each receiver.
      * @return The same message that was sent to each receiver.
      */
-
     private static BigInteger recoverMessage(BigInteger[] N, BigInteger[] e, BigInteger[] c) {
 
 
