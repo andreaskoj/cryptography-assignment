@@ -1,12 +1,3 @@
-/*
- * REPORT
- *
- * Personnummer: 199110264935
- *
- *
- *
- */
-
 package Cryptography;
 
 import java.io.BufferedReader;
@@ -90,8 +81,9 @@ public class AttackRSA {
         Ninv = Nmul.modInverse(Ntmp);
         t3 = ctmp.multiply(Nmul).multiply(Ninv);
 
-        Nmul = N[0].multiply(N[1]).multiply(N[2]);
         sum = t1.add(t2).add(t3);
+
+        Nmul = N[0].multiply(N[1]).multiply(N[2]);
 
         return CubeRoot.cbrt(sum.mod(Nmul));
     }

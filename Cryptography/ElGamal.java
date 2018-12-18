@@ -1,22 +1,3 @@
-/*
- * REPORT
- *
- * Personnummer: 199110264935
- *
- * To recover the message we first needed to recover the random number r, where R = r^2. To do that we exploited the
- * way in which a message is encrypted in ElGamal: c1 = g^r. So we created all the possible r values iterating over all
- * possible milliseconds values, until the latter equation is satisfied.
- *
- * Once we found the correct r we used the following: c2 = m * y^r. From the latter we can retrieve m = c2 * y^-r.
- *
- * Recovered message:
- * 171583025435590940701381043129867429519017355171788527397403780978355685958207634415007492102872317662611675832109792326702
- *
- * Decoded text:
- * Bruce Schneier knows Alice and Bob's shared secret.
- *
- */
-
 package Cryptography;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;

@@ -1,23 +1,3 @@
-/* REPORT
- *
- * Personnummer: 199110264935
- *
- * We check each possible pair of runs until we find two runs i and j that have Ri = Rj = R and ci != cj.
- * Then we exploit the following two equations:
- *      si^2 = R * Xi^ci
- *      sj^2 = R * Xj^cj
- *
- *  From there, assuming that ci = 0 and cj = 1, we obtain the following. (If cj =1 and ci = 1 we simply swap.)
- *      x = sj * si^-1
- *
- * Recovered message:
- * 243584202333895510512748939572531656001716982622777463126342293818818172090977126351505204422855740631128135876472239966512128651207085058705617891925475269562599814349152186456774650008879811381953600431903702127019287037418902544655579295253975934311378610300379058765444713594762838663972697910426712556202290606952819754101860
- *
- * Decoded text:
- * It's amazing that the amount of news that happens in the world every day always just exactly fits the newspaper. --------- Jerry Seinfeld
- *
- */
-
 package Cryptography;
 
 import java.io.BufferedReader;

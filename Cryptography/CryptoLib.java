@@ -1,9 +1,9 @@
 package Cryptography;
 
-
 /**
  * Personnummer: 199110264935
  */
+
 public class CryptoLib {
 
 
@@ -188,7 +188,6 @@ public class CryptoLib {
         return x;
     }
 
-    // Here we simply applied the algorithm that is explained in the Birthday problem Wikipedia page.
     public static double HashCP(double n_samples, double size) {
         double p_tmp, result;
         int i;
