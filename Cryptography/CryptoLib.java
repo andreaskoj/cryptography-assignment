@@ -6,18 +6,6 @@ package Cryptography;
 
 public class CryptoLib {
 
-
-    /** EEA
-     * We are applying the method used on the lecture.
-     * 1. We swapping places to have higher number on 1 position.
-     * 2. We are computing t,s until we get lowest gcd > 0.
-     * 3. If we swapped places in step 1 we swap it back.
-     *
-     * @param a - number 1
-     * @param b - number 2
-     * @return - returns gcd and Bézout coefficients t,s
-     */
-
     public static int[] EEA(int a, int b) {
 
         int c;
@@ -84,15 +72,6 @@ public class CryptoLib {
         return result;
     }
 
-    /**
-     * 1. We are computing all gcd in range 0 to n
-     * 2. If the gcd equals to 1 we increment result variable.
-     * 3. We implemented gcd method bellow EulerPhi
-     *
-     * @param n - number on which we have to compute Eulers Totient
-     * @return Eulers Totient
-     */
-
     public static int EulerPhi(int n) {
         int result = 0;
         for (int i = 0; i < n; i++) {
@@ -108,18 +87,6 @@ public class CryptoLib {
         else
             return n1;
     }
-
-    /**
-     * 1. if n is negative add modulo to switch it to non-negative
-     * 2. Computing gcd, if gcd is not 1 there is no modular inverse
-     * 3. Using EEA algorithm to find modular inverse, second parameter of the result is s parameter which is
-     * modular inverse of our n
-     * 4. if modular inverse is negative we change to positive by adding modulo
-     *
-     * @param n - number on which we compute modular inverse
-     * @param m - modulo
-     * @return
-     */
 
     public static int ModInv(int n, int m) {
         int arrayRes[];
@@ -140,17 +107,7 @@ public class CryptoLib {
             mv = arrayRes[1];
         return mv;
     }
-
-    /**
-     * 1. To check if the numbers is probably prime we apply Fermat's little theorem a^n-1 = 1 mod p.
-     * 2. If Fermat's little theorem returns number different that 1 this is Fermat witness.
-     * 3. If we get in all tests (a < n/3) number 1 we return 0 (this is probably prime number).
-     * 4. We implemented extra method power_modulo (method from assignment 2) to computer high powers without using
-     * BigInteger.
-     *
-     * @param n - number which we test if it's prime
-     * @return  - returns lowest witness or 0 if it's probably prime
-     */
+    
 
     public static int FermatPT(int n) {
         int numberOfTests = 0;
