@@ -6,8 +6,14 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.math.BigInteger;
 
-/**
+/*
  * Personnummer: 199110264935
+ *
+ * To recover the message we first needed to recover the random number r, where R = r^2. To do that we exploited the
+ * way in which a message is encrypted in ElGamal: c1 = g^r. So we created all the possible r values iterating over all
+ * possible milliseconds values, until the latter equation is satisfied.
+ *
+ * Once we found the correct r we used the following: c2 = m * y^r. From the latter we can retrieve m = c2 * y^-r.
  */
 
 public class ElGamal {
@@ -83,11 +89,9 @@ public class ElGamal {
             System.exit(1);
         }
 
-        BigInteger exp = p.subtract(BigInteger.valueOf(1)).subtract(r);
+        BigInteger pow = y.modPow(r, p);
 
-        BigInteger pow = y.modPow(exp, p);
-
-        return c2.multiply(pow).mod(p);
+        return c2.multiply( pow.modInverse(p) ).mod(p);
     }
 
     public static BigInteger createRandomNumber(int year, int month, int day, int hour, int minute, int second,

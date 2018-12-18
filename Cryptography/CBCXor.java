@@ -10,7 +10,7 @@ import java.util.Arrays;
  * 1. To attack CBC we have to find K key
  * 2. To get K we xor IV , first_block and ct0.
  * 3. When we establish the key we use it to decrypt every block of the ct.
-* */
+**/
 
 public class CBCXor {
 
